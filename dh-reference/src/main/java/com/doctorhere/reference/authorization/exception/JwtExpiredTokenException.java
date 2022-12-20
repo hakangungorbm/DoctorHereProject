@@ -1,5 +1,4 @@
-package com.doctorhere.reference.authorization;
-
+package com.doctorhere.reference.authorization.exception;
 
 import com.doctorhere.reference.authorization.token.JwtToken;
 import org.springframework.security.core.AuthenticationException;

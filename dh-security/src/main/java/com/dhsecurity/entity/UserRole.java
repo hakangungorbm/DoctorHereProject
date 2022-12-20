@@ -33,7 +33,7 @@ public class UserRole {
     }
     
     @EmbeddedId
-    Id id = new Id();
+    Id Id = new Id();
     
     @Enumerated(EnumType.STRING)
     @Column(name = "ROLE", insertable=false, updatable=false)

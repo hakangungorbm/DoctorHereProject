@@ -1,7 +1,7 @@
 package com.doctorhere.reference.authorization.token;
 
 
-import com.doctorhere.reference.authorization.JwtExpiredTokenException;
+import com.doctorhere.reference.authorization.exception.JwtExpiredTokenException;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -3,6 +3,7 @@ package com.doctorhere.reference.authorization.config;
 
 import com.doctorhere.reference.authorization.JwtAuthenticationProvider;
 import com.doctorhere.reference.authorization.JwtTokenAuthenticationProcessingFilter;
+import com.doctorhere.reference.authorization.RestAuthenticationEntryPoint;
 import com.doctorhere.reference.authorization.SkipPathRequestMatcher;
 import com.doctorhere.reference.authorization.extractor.TokenExtractor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,6 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationProvider jwtAuthenticationProvider;
 
+    @Autowired private RestAuthenticationEntryPoint authenticationEntryPoint;
+
     @Autowired
     private TokenExtractor tokenExtractor;
 
@@ -77,7 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         List<String> permitAllEndpointList = Arrays.asList(
             AUTHENTICATION_URL,
             REFRESH_TOKEN_URL,
-                REFRESH_DENEME,
                 "/v2/api-docs",
                 "/configuration/**",
                 "/swagger*/**",
@@ -87,7 +89,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .csrf().disable() // We don't need CSRF for JWT based authentication
             .exceptionHandling()
-//            .authenticationEntryPoint(this.authenticationEntryPoint)
+            .authenticationEntryPoint(this.authenticationEntryPoint)
 
             .and()
                 .sessionManagement()
@@ -99,7 +101,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
             .and()
                 .authorizeRequests()
-//                .antMatchers(REFRESH_DENEME).hasAnyRole("ADMIN")
+                .antMatchers(REFRESH_DENEME).hasAnyRole("ADMIN")
                 .antMatchers(API_ROOT_URL).authenticated() // Protected API End-points
             .and()
                 .addFilterBefore(new CustomCorsFilter(), UsernamePasswordAuthenticationFilter.class)
