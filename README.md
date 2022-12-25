@@ -11,3 +11,4 @@ Adımlar:
     a) http://localhost:8086/api/auth/login
 adresinden token al. Yine postman üzerinden aşağıdaki adrese bearer token ekleyerek istek at.
     b)http://localhost:8082/api/reference/hello
+3) DhService swagger adres: http://localhost:8083/swagger-ui/index.html#

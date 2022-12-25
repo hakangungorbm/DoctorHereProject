@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+    <changeSet author="hasan.eroglu" id="dh-service-1-2022-12-24 15:00" context="sql">
+        <sql splitStatements="true">
+            create table if not exists dh_country
+            (
+                id         bigint not null
+                primary key,
+                name       varchar(150),
+                phone_code varchar(20),
+                sort_name  varchar(50)
+                );
+
+            create sequence seq_dh_country as bigint;
+
+            comment on column dh_country.name is 'ülkenin adı';
+            comment on column dh_country.phone_code is 'ülkenin telefon kodu';
+            comment on column dh_country.sort_name is 'ülkenin kısa adı';
+            insert into dh_country (id, name, phone_code, sort_name) values (1,'Türkiye','+90','TUR');
+            insert into dh_country (id, name, phone_code, sort_name) values (2,'Almanya','+49','GER');
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>

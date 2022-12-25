@@ -20,6 +20,7 @@
     <modules>
         <module>dh-reference</module>
         <module>dh-security</module>
+        <module>dh-service</module>
     </modules>
 
     <dependencies>
@@ -80,6 +81,8 @@
     </build>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mapstruct.version>1.5.0.Beta2</mapstruct.version>
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
