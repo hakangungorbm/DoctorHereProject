@@ -1,4 +1,4 @@
-package com.doctorhere.country.model.dto;
+package com.doctorhere.base.country.model.dto;
 
 import lombok.Data;
 
@@ -11,5 +11,6 @@ public class CountryResponseDto{
     private String name;
     private String sortName;
     private String phoneCode;
+    private String code;
 
 }

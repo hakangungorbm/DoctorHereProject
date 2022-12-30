@@ -14,7 +14,11 @@ public class HazelcastConfiguration {
     public Config hazelcastConfig() {
 
         return new Config().setInstanceName("dh-cache")
-                .addMapConfig(new MapConfig().setName("addressCache")
+                .addMapConfig(new MapConfig().setName("countryCache")
+                        .setMaxSizeConfig(new MaxSizeConfig(300, MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE))
+                        .setEvictionPolicy(EvictionPolicy.LRU)
+                        .setTimeToLiveSeconds(45000))
+                .addMapConfig(new MapConfig().setName("provinceByCountryCode")
                         .setMaxSizeConfig(new MaxSizeConfig(300, MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE))
                         .setEvictionPolicy(EvictionPolicy.LRU)
                         .setTimeToLiveSeconds(45000))

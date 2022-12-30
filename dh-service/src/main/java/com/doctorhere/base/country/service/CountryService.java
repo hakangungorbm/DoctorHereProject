@@ -1,11 +1,9 @@
-package com.doctorhere.country.service;
+package com.doctorhere.base.country.service;
 
 
-import com.doctorhere.country.model.Country;
-import com.doctorhere.country.model.dto.CountryResponseDto;
-import com.doctorhere.country.repository.CountryRepository;
+import com.doctorhere.base.country.repository.CountryRepository;
+import com.doctorhere.base.country.model.Country;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

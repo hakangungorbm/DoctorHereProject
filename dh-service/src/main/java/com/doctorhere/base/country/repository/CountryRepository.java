@@ -1,6 +1,6 @@
-package com.doctorhere.country.repository;
+package com.doctorhere.base.country.repository;
 
-import com.doctorhere.country.model.Country;
+import com.doctorhere.base.country.model.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

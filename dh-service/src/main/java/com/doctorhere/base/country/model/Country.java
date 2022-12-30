@@ -1,4 +1,4 @@
-package com.doctorhere.country.model;
+package com.doctorhere.base.country.model;
 
 import lombok.Data;
 
@@ -19,6 +19,8 @@ public class Country implements Serializable {
     private String name;
     @Column(name = "sort_name", length = 50)
     private String sortName;
+    @Column(name = "code", length = 50)
+    private String code;
     @Column(name = "phone_code", length = 20)
     private String phoneCode;
 

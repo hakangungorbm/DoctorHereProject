@@ -8,6 +8,7 @@
                 primary key,
                 name       varchar(150),
                 phone_code varchar(20),
+                code varchar(20),
                 sort_name  varchar(50)
                 );
 
@@ -16,8 +17,26 @@
             comment on column dh_country.name is 'ülkenin adı';
             comment on column dh_country.phone_code is 'ülkenin telefon kodu';
             comment on column dh_country.sort_name is 'ülkenin kısa adı';
-            insert into dh_country (id, name, phone_code, sort_name) values (1,'Türkiye','+90','TUR');
-            insert into dh_country (id, name, phone_code, sort_name) values (2,'Almanya','+49','GER');
+            comment on column dh_country.code is 'ülkenin kodu';
+            insert into dh_country (id, name, phone_code, sort_name, code) values (1,'Türkiye','+90','TUR', 'TR');
+            insert into dh_country (id, name, phone_code, sort_name, code) values (2,'Almanya','+49','GER', 'GE');
+
+            CREATE TABLE if not exists dh_province (
+                    id bigint not null  primary key,
+                    name       varchar(150),
+                    country_id int8 NULL,
+                    phone_code varchar(20),
+                    code varchar(20)
+            );
+        ALTER TABLE dh_province ADD CONSTRAINT fk_province_country_id FOREIGN KEY (country_id) REFERENCES dh_country(id);
+
+        comment on column dh_province.name is 'il adı';
+        comment on column dh_province.phone_code is 'il telefon kodu';
+        comment on column dh_province.country_id is 'il ülke id';
+        comment on column dh_province.code is 'il kodu';
+        INSERT INTO dh_province (id, name, country_id, phone_code,code) VALUES(1, 'Ankara',1,'312','');
+        INSERT INTO dh_province (id, name, country_id, phone_code,code) VALUES(2, 'Hatay',1,'326','');
+
         </sql>
     </changeSet>
 

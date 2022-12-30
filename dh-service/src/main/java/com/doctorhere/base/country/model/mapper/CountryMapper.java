@@ -1,8 +1,8 @@
-package com.doctorhere.country.model.mapper;
+package com.doctorhere.base.country.model.mapper;
 
 
-import com.doctorhere.country.model.Country;
-import com.doctorhere.country.model.dto.CountryResponseDto;
+import com.doctorhere.base.country.model.Country;
+import com.doctorhere.base.country.model.dto.CountryResponseDto;
 import org.mapstruct.*;
 
 import java.util.List;
