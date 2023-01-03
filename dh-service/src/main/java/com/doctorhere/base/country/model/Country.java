@@ -17,8 +17,6 @@ public class Country implements Serializable {
     private Long Id;
     @Column(name = "name", length = 150)
     private String name;
-    @Column(name = "sort_name", length = 50)
-    private String sortName;
     @Column(name = "code", length = 50)
     private String code;
     @Column(name = "phone_code", length = 20)
