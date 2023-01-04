@@ -2,7 +2,7 @@
 
 create database doctorhere
 
-swagger adres: http://localhost:8082/swagger-ui/index.html#
+swagger adres: http://localhost:8083/swagger-ui/index.html#
 
 
 Adımlar: 
