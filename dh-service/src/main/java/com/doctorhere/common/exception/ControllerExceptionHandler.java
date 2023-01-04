@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
                 ex.getMessage(),
                 request.getDescription(false));
 
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.NOT_FOUND);
+        return new ResponseEntity(message, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(Exception.class)
@@ -31,7 +31,7 @@ public class ControllerExceptionHandler {
                 ex.getMessage(),
                 request.getDescription(false));
 
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(OptimisticLockingFailureException.class)
@@ -42,6 +42,6 @@ public class ControllerExceptionHandler {
                 "Bu kayıt üzerinde başka çalışma yapılmaktadır.Lütfen yenileyip tekrar deneyiniz.",
                 request.getDescription(false));
 
-        return new ResponseEntity<ErrorMessage>(message, HttpStatus.CONFLICT);
+        return new ResponseEntity(message, HttpStatus.CONFLICT);
     }
 }

@@ -13,21 +13,22 @@ public interface ProfessionMapper {
 
     @Mapping(target = "parentId", source = "parent.id")
     @Mapping(target = "parentName", source = "parent.name")
-    public abstract ProfessionResponseDto toDto(Profession profession);
-    public abstract List<ProfessionResponseDto> toDto(List<Profession> professions);
+    ProfessionResponseDto toDto(Profession profession);
+    List<ProfessionResponseDto> toDto(List<Profession> professions);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "version", ignore = true)
     @Mapping(target = "parent.id", source = "parentId")
-    public abstract Profession toEntity(ProfessionRequestDto professionRequestDTO);
+    Profession toEntity(ProfessionRequestDto professionRequestDTO);
 
     @Mapping(target = "parent.id", source = "parentId")
-    public abstract void updateEntity(@MappingTarget Profession profession, ProfessionRequestDto request);
+    void updateEntity(@MappingTarget Profession profession, ProfessionRequestDto request);
 
     @BeforeMapping
     default void doBeforeMapping(@MappingTarget Profession entity, ProfessionRequestDto dto) {
         entity.setParent(null);
     }
+
     @AfterMapping
     default void doAfterMapping(@MappingTarget Profession entity, ProfessionRequestDto dto) {
         if (dto.getParentId() == null) {

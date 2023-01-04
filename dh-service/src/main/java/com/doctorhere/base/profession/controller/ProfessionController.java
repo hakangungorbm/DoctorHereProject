@@ -32,7 +32,7 @@ public class ProfessionController {
 
     @ApiOperation(value = "Uzmanlık Servisi", response = Profession.class, responseContainer = "List")
     @RequestMapping(value = "/list/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> listAllProfessions(
+    public ResponseEntity listAllProfessions(
             @RequestParam(name = "status", required = false) Boolean status,
             @RequestParam(name = "pageNumber", required = false, defaultValue = "1") Integer pageNumber,
             @RequestParam(name = "pageSize", required = false, defaultValue = "20") Integer pageSize,
@@ -45,10 +45,10 @@ public class ProfessionController {
     ) {
         if (pageable) {
             Page<ProfessionResponseDto> professions = professionService.findAllPageable(pageNumber, pageSize, sortingDirection, sortingName, name, status, parentId, parents).map(professionMapper::toDto);
-            return new ResponseEntity<Page<ProfessionResponseDto>>(professions, HttpStatus.OK);
+            return new ResponseEntity(professions, HttpStatus.OK);
         } else {
             List<ProfessionResponseDto> professions = professionMapper.toDto(professionService.findAllList(sortingDirection, sortingName, status, name, parentId, parents));
-            return new ResponseEntity<List<ProfessionResponseDto>>(professions, HttpStatus.OK);
+            return new ResponseEntity(professions, HttpStatus.OK);
         }
     }
 
@@ -57,24 +57,23 @@ public class ProfessionController {
     public ResponseEntity<ProfessionResponseDto> getProfession(
             @ApiParam(value = "Getirilecek nesnesinin Id si", required = true) @PathVariable("id") long id) {
         Profession profession = professionService.findByIdAndDeletedFalse(id).orElseThrow(() -> new ResourceNotFoundException("Not found Profession with id = " + id));
-        return new ResponseEntity<ProfessionResponseDto>(professionMapper.toDto(profession), HttpStatus.OK);
+        return new ResponseEntity(professionMapper.toDto(profession), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Id ye göre Uzmanlık Alanı silme")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> deleteProfession(
+    public ResponseEntity<ProfessionResponseDto> deleteProfession(
             @ApiParam(value = "Silinecek nesnenin Id si", required = true) @PathVariable("id") long id) {
         Profession profession = professionService.findByIdAndDeletedFalse(id).orElseThrow(() -> new ResourceNotFoundException("Not found Profession with id = " + id));
         professionService.delete(profession);
-        return new ResponseEntity<ProfessionResponseDto>(HttpStatus.OK);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
-    @SuppressWarnings({"unchecked", "rawtypes"})
     @RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Uzmanlık Alanı kaydetme", response = ProfessionResponseDto.class)
     public ResponseEntity<ProfessionResponseDto> createProfession(
             @ApiParam(value = "Eklenecek nesne", required = true) @RequestBody ProfessionRequestDto professionRequestDTO) {
-        return new ResponseEntity<ProfessionResponseDto>(professionMapper.toDto(professionService.save(professionMapper.toEntity(professionRequestDTO))), HttpStatus.CREATED);
+        return new ResponseEntity(professionMapper.toDto(professionService.save(professionMapper.toEntity(professionRequestDTO))), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Id ye göre Uzmanlık Alanı güncelleme", response = ProfessionResponseDto.class)
@@ -83,6 +82,6 @@ public class ProfessionController {
             @ApiParam(value = "Güncellenecek nesne", required = true) @RequestBody ProfessionRequestDto professionRequestDTO) {
         Profession profession = professionService.findByIdAndDeletedFalse(professionRequestDTO.getId()).orElseThrow(() -> new ResourceNotFoundException("Not found Profession with id = " + professionRequestDTO.getId()));
         professionMapper.updateEntity(profession, professionRequestDTO);
-        return new ResponseEntity<ProfessionResponseDto>(professionMapper.toDto(professionService.update(profession)), HttpStatus.CREATED);
+        return new ResponseEntity(professionMapper.toDto(professionService.update(profession)), HttpStatus.CREATED);
     }
 }

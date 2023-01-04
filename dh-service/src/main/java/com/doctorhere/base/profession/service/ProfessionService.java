@@ -3,7 +3,6 @@ package com.doctorhere.base.profession.service;
 import com.doctorhere.base.profession.model.Profession;
 import com.doctorhere.base.profession.repository.ProfessionRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -37,7 +36,6 @@ public class ProfessionService {
 	}
 
     public Page<Profession> findAllPageable(Integer pageNumber, Integer pageSize, String sortingDirection, String sortingName, String name, Boolean status, Long parentId, Boolean parents) {
-        PageRequest request;
         Sort.Direction direction;
         if (sortingDirection.equals("ASC")) {
             direction = Sort.Direction.ASC;
@@ -53,7 +51,6 @@ public class ProfessionService {
     }
 
     public List<Profession> findAllList(String sortingDirection, String sortingName, Boolean status, String name,Long parentId,Boolean parents) {
-
         Sort.Direction direction;
         if (sortingDirection.equals("ASC")) {
             direction = Sort.Direction.ASC;
