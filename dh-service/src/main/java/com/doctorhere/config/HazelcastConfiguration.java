@@ -22,7 +22,12 @@ public class HazelcastConfiguration {
                         .setMaxSizeConfig(new MaxSizeConfig(300, MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE))
                         .setEvictionPolicy(EvictionPolicy.LRU)
                         .setTimeToLiveSeconds(45000))
+                .addMapConfig(new MapConfig().setName("districtByProvince")
+                        .setMaxSizeConfig(new MaxSizeConfig(300, MaxSizeConfig.MaxSizePolicy.FREE_HEAP_SIZE))
+                        .setEvictionPolicy(EvictionPolicy.LRU)
+                        .setTimeToLiveSeconds(45000))
                 ;
+
     }
 
 }
