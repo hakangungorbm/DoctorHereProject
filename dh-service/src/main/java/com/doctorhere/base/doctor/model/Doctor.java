@@ -48,8 +48,8 @@ public class Doctor extends BaseEntity {
     @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinTable(
             name = "doctor_profession",
-            joinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "profession_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "doctor_id"),
+            inverseJoinColumns = @JoinColumn(name = "profession_id"))
     private Set<Profession> doctorProfessionsSet = new HashSet();
 
 }
