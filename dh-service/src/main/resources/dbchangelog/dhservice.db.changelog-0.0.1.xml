@@ -5,4 +5,5 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
     <include file="dbchangelog/doctorhere_v0.0.1/dh-service-1.xml"/>
     <include file="dbchangelog/doctorhere_v0.0.1/DH-14.xml"/>
+    <include file="dbchangelog/doctorhere_v0.0.1/DH-15.xml"/>
 </databaseChangeLog>
