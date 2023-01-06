@@ -11,14 +11,15 @@
                 last_modified_by   varchar(255),
                 deleted            boolean default false,
                 version            numeric default 0 not null,
-                names       varchar(100),
+                name       varchar(100),
                 description varchar(500),
                 sub_description varchar(500),
                 image_url varchar(150),
                 parent_id bigint,
                 tag varchar(150),
                 time bigint,
-                sort_order  varchar(50)
+                sort_order  varchar(50),
+                status            boolean default true
                 );
 
             ALTER TABLE dh_profession ADD CONSTRAINT fk_profession_parent_id FOREIGN KEY (parent_id) REFERENCES dh_profession(id);

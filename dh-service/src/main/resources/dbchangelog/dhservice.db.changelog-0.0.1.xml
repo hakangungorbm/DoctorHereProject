@@ -6,4 +6,5 @@
     <include file="dbchangelog/doctorhere_v0.0.1/dh-service-1.xml"/>
     <include file="dbchangelog/doctorhere_v0.0.1/DH-14.xml"/>
     <include file="dbchangelog/doctorhere_v0.0.1/DH-11.xml"/>
+    <include file="dbchangelog/doctorhere_v0.0.1/DH-15.xml"/>
 </databaseChangeLog>

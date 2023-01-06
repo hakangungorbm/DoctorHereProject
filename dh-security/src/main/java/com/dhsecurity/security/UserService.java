@@ -11,5 +11,5 @@ import java.util.Optional;
  * Aug 17, 2016
  */
 public interface UserService {
-    public Optional<User> getByUsername(String username);
+    Optional<User> getByUsername(String username);
 }
