@@ -14,6 +14,7 @@ import com.doctorhere.common.exception.BusinessRuleException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
@@ -39,7 +40,6 @@ public class DoctorServiceImpl implements DoctorService {
             userExist.get().getRoles().add(new UserRole(Role.DOCTOR, userExist.get()));
             user = userExist.get();
         } else {
-            //TODO Password encrypt edilmeli.
             user = userMapper.toEntity(doctorRequest.getEmail(), doctorRequest.getPassword(), List.of(Role.DOCTOR));
             user.getRoles().get(0).setUser(user);
         }

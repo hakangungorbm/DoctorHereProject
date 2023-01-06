@@ -45,11 +45,11 @@ public class Doctor extends BaseEntity {
     private Boolean online;
     private Boolean approved;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinTable(
             name = "doctor_profession",
-            joinColumns = @JoinColumn(name = "doctor_id"),
-            inverseJoinColumns = @JoinColumn(name = "profession_id"))
+            joinColumns = @JoinColumn(name = "doctor_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "profession_id", referencedColumnName = "id"))
     private Set<Profession> doctorProfessionsSet = new HashSet();
 
 }
