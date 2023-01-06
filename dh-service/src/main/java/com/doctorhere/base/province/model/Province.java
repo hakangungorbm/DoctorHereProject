@@ -18,7 +18,7 @@ public class Province implements Serializable {
     @Id
     @SequenceGenerator(allocationSize = 1, name = "seq_dh_province", sequenceName = "seq_dh_province")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_dh_province")
-    private Long Id;
+    private Long id;
 
     @Column(name = "name", length = 100)
     private String name;
